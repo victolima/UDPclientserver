@@ -8,6 +8,7 @@
 #include "./local.h"
 #include "./help.h"
 #include <sys/utsname.h>
+#include <sys/socket.h>
 #include <string.h>
 #include <time.h>
 
@@ -64,8 +65,7 @@ main(int argc, char *argv[])
     }
   
     else if(strcmp(buffer,"shutdown") == 0) {
-      close(servidor, SHUT_RD);
-      break;
+      
     }
   
     else if(strcmp(buffer,"credits") == 0){
@@ -75,7 +75,7 @@ main(int argc, char *argv[])
   
     else if(strcmp(buffer,"exit") == 0) {
       printf("Encerrando...\n\n");
-      break;
+      exit(EXIT_FAILURE);
     }
   
     else if(strcmp(buffer,"help") == 0) {
