@@ -37,19 +37,11 @@ main(int argc, char *argv[])
     gets(buffer);
     
     bytes_enviados = sendto(socket_servidor, buffer, MAX_SIZE_BUFFER, 0, (struct sockaddr *)&servidor, sizeof(servidor));
-    if (bytes_enviados < 0) 
-      error("Erro de envio");
 
     bytes_recebidos = recvfrom(socket_servidor, buffer,MAX_SIZE_BUFFER, 0, (struct sockaddr *)&servidor, &tamanho_servidor);
-     if (bytes_recebidos < 0) 
-      error("Erro de recebimento");
 
-    printf("%s\n\n", buffer);
+    printf("%s", buffer);
 
-    if (buffer == 1){
-      printf("%d:%d:%d\n\n", tm.tm_hour, tm.tm_min, tm.tm_sec);
-    }
-    
     close(socket_servidor);
   }
   return 0;
